@@ -44,5 +44,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            ENV_CONTENT=${{ secrets.ENV }}
+          secrets: |
+            env_content=${{ secrets.ENV }}

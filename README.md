@@ -21,10 +21,10 @@ To use the deployment workflow, configure the following secrets in your GitHub r
 
 1. The workflow triggers on push to the `main` branch
 2. Builds a Docker image from the `src/` folder using the Dockerfile
-3. Creates a `.env` file inside the container from the `ENV` secret during build time
+3. Securely creates a `.env` file inside the container from the `ENV` secret during build using BuildKit secret mounts (secrets are not stored in image layers)
 4. Pushes the image to your Azure Container Registry with appropriate tags
 
-**Note**: The `.env` file is never committed to the repository - it's created during the Docker build process from the GitHub secret.
+**Security Note**: The `.env` file is never committed to the repository. It's created during the Docker build process using BuildKit secret mounts, which ensures secrets are not exposed in image layers or build cache.
 
 ## Contributing
 
