@@ -31,6 +31,7 @@ configure_azure_monitor(connection_string=application_insights_connection_string
 OpenAIInstrumentor().instrument()
 
 # scenario = os.path.basename(__file__)
+#
 # tracer = trace.get_tracer(__name__)
 
 # Increase thread pool size for better concurrency
