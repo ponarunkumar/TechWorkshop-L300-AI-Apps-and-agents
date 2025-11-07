@@ -36,6 +36,7 @@ jobs:
           DOCKER_BUILDKIT: 1
 
       - name: Clean up .env.temp
+        if: always()
         run: rm -f src/.env.temp
 
       - name: Deploy to Azure Web App for Containers
