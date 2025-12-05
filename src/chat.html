@@ -241,6 +241,7 @@
                     <!-- Hidden checkbox elements - can be re-enabled by uncommenting
                     <label><input type="checkbox" id="sendImageCheckbox" onchange="toggleImageInput()"> Image</label>
                     <input id="imageUrlInput" type="text" placeholder="Image URL" style="display:none; margin-left:0.5em; max-width:200px;"/>
+                    -->
                     <button onclick="sendMessage()">Send</button>
                 </div>
             </div>
@@ -329,6 +330,7 @@
             var imageUrlInput = document.getElementById("imageUrlInput");
             imageUrlInput.style.display = checkbox.checked ? "inline" : "none";
         }
+        */
         
         function addMessage(role, text, hasImage) {
             var chat = document.getElementById('chat');
@@ -354,10 +356,12 @@
         
         function sendMessage() {
             var input = document.getElementById("messageInput");
+            var message = input.value;
+            
             /* Hidden checkbox functionality - can be re-enabled by uncommenting
             var imageCheckbox = document.getElementById("sendImageCheckbox");
             var hasImage = imageCheckbox.checked;
-            var message = input.value;
+            
             var payload = {
                 conversation_history: formatConversationHistory(),
                 has_image: hasImage,
@@ -365,7 +369,6 @@
                 message: message
             };
             
-            /* Hidden image handling logic - can be re-enabled by uncommenting
             // Handle image
             if (hasImage) {
                 var imageUrlInput = document.getElementById("imageUrlInput");
@@ -384,8 +387,17 @@
                     return;
                 }
             }
+            */
             
-            // No image
+            // Simplified payload without checkbox functionality
+            var payload = {
+                conversation_history: formatConversationHistory(),
+                has_image: false,
+                customer_id: "CUST001",
+                message: message
+            };
+            
+            // No image (functionality hidden)
             addMessage('user', message, false);
             conversationHistory.push({role: 'user', msg: message, has_image: false});
             addDebugEntry('outgoing', 'Client Request', payload);
