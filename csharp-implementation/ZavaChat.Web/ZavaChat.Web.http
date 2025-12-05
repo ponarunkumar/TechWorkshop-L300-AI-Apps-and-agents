@@ -1,0 +1,6 @@
+@ZavaChat.Web_HostAddress = http://localhost:5224
+
+GET {{ZavaChat.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
