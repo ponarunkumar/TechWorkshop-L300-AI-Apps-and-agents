@@ -55,3 +55,5 @@ out/
 
 # Github
 .github/
+parameters.json
+.azure
