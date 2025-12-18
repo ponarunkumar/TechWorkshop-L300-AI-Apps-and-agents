@@ -22,7 +22,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Copy .env file into the image (for python-dotenv)
-COPY .env .env
+# Support build-time argument for env file (used in CI/CD)
+ARG ENV_FILE=.env
+COPY ${ENV_FILE} .env
 
 # Expose the port (default FastAPI/uvicorn port)
 EXPOSE 8000
